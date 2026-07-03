@@ -5,35 +5,35 @@
 <title>Support Backlog Radar — July 3, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{{box-sizing:border-box;margin:0;padding:0}}
-body{{font-family:"Bricolage Grotesque",Calibri,sans-serif;background:#f8f8fc;color:#1F1E5D;font-size:13px}}
-.header{{background:linear-gradient(135deg,#1F1E5D 0%,#706CFF 100%);color:#fff;padding:28px 40px 20px}}
-.header h1{{font-size:24px;font-weight:700}}
-.header .sub{{opacity:.8;font-size:13px;margin-top:4px}}
-.tab-bar{{background:#fff;border-bottom:2px solid #D0D1D8;display:flex;padding:0 40px;gap:4px}}
-.tab-btn{{padding:14px 22px;font-size:13px;font-weight:600;color:#5A5D77;border:none;background:transparent;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}}
-.tab-btn.active{{color:#1F1E5D;border-bottom-color:#706CFF}}.tab-btn:hover{{color:#1F1E5D}}
-.tab-badge{{background:#706CFF;color:#fff;padding:2px 7px;border-radius:20px;font-size:11px;margin-left:5px}}
-.tab-badge.red{{background:#ef4444}}.tab-badge.amber{{background:#f97316}}
-.tab-content{{display:none}}.tab-content.active{{display:block}}
-.kpi-wrap{{padding:20px 40px 0}}
-.kpi-table{{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:16px}}
-.kpi-table th{{background:#1F1E5D;color:#fff;padding:10px 12px;font-size:12px;font-weight:600}}
-.kpi-table td{{border-bottom:1px solid #EFEFEF;font-size:13px}}
-.kpi-section-label{{background:#EEF0FF;color:#1F1E5D;padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}}
-.filters{{padding:14px 40px;background:#fff;border-bottom:1px solid #D0D1D8;display:flex;gap:10px;flex-wrap:wrap;align-items:center}}
-.filters label{{font-size:12px;color:#5A5D77}}
-.filters select,.filters input{{border:1px solid #D0D1D8;border-radius:8px;padding:5px 10px;font-size:12px;color:#1F1E5D;background:#f8f8fc}}
-.table-wrap{{overflow-x:auto;padding:20px 40px 40px}}
-table.main{{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}}
-th{{background:#1F1E5D;color:#fff;padding:10px;text-align:left;font-size:11px;font-weight:600;white-space:nowrap;position:sticky;top:0;z-index:1}}
-tr.ticket-row:hover td,tr.esc-row:hover td{{background:#f0f0ff}}
-.kpi-cards{{display:flex;gap:14px;padding:16px 40px;flex-wrap:wrap}}
-.kpi-card{{flex:1;min-width:120px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.07);text-align:center}}
-.kpi-card .num{{font-size:28px;font-weight:700;color:#1F1E5D}}
-.kpi-card .num.red{{color:#ef4444}}.kpi-card .num.amber{{color:#f97316}}.kpi-card .num.orange{{color:#f97316}}
-.kpi-card .lbl{{font-size:11px;color:#5A5D77;margin-top:4px}}
-.footer{{text-align:center;padding:16px;color:#9ca3af;font-size:11px}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Bricolage Grotesque",Calibri,sans-serif;background:#f8f8fc;color:#1F1E5D;font-size:13px}
+.header{background:linear-gradient(135deg,#1F1E5D 0%,#706CFF 100%);color:#fff;padding:28px 40px 20px}
+.header h1{font-size:24px;font-weight:700}
+.header .sub{opacity:.8;font-size:13px;margin-top:4px}
+.tab-bar{background:#fff;border-bottom:2px solid #D0D1D8;display:flex;padding:0 40px;gap:4px}
+.tab-btn{padding:14px 22px;font-size:13px;font-weight:600;color:#5A5D77;border:none;background:transparent;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab-btn.active{color:#1F1E5D;border-bottom-color:#706CFF}.tab-btn:hover{color:#1F1E5D}
+.tab-badge{background:#706CFF;color:#fff;padding:2px 7px;border-radius:20px;font-size:11px;margin-left:5px}
+.tab-badge.red{background:#ef4444}.tab-badge.amber{background:#f97316}
+.tab-content{display:none}.tab-content.active{display:block}
+.kpi-wrap{padding:20px 40px 0}
+.kpi-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:16px}
+.kpi-table th{background:#1F1E5D;color:#fff;padding:10px 12px;font-size:12px;font-weight:600}
+.kpi-table td{border-bottom:1px solid #EFEFEF;font-size:13px}
+.kpi-section-label{background:#EEF0FF;color:#1F1E5D;padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.filters{padding:14px 40px;background:#fff;border-bottom:1px solid #D0D1D8;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.filters label{font-size:12px;color:#5A5D77}
+.filters select,.filters input{border:1px solid #D0D1D8;border-radius:8px;padding:5px 10px;font-size:12px;color:#1F1E5D;background:#f8f8fc}
+.table-wrap{overflow-x:auto;padding:20px 40px 40px}
+table.main{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+th{background:#1F1E5D;color:#fff;padding:10px;text-align:left;font-size:11px;font-weight:600;white-space:nowrap;position:sticky;top:0;z-index:1}
+tr.ticket-row:hover td,tr.esc-row:hover td{background:#f0f0ff}
+.kpi-cards{display:flex;gap:14px;padding:16px 40px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:120px;background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.07);text-align:center}
+.kpi-card .num{font-size:28px;font-weight:700;color:#1F1E5D}
+.kpi-card .num.red{color:#ef4444}.kpi-card .num.amber{color:#f97316}.kpi-card .num.orange{color:#f97316}
+.kpi-card .lbl{font-size:11px;color:#5A5D77;margin-top:4px}
+.footer{text-align:center;padding:16px;color:#9ca3af;font-size:11px}
 </style>
 </head>
 <body>
@@ -1653,7 +1653,7 @@ tr.ticket-row:hover td,tr.esc-row:hover td{{background:#f0f0ff}}
 <div class="footer">Acoustic Performance Edge &nbsp;·&nbsp; Support Backlog Radar &nbsp;·&nbsp; July 3, 2026</div>
 
 <script>
-function switchTab(tab,btn){{
+function switchTab(tab,btn){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(tab).classList.add('active');
@@ -1663,8 +1663,8 @@ function switchTab(tab,btn){{
   else if(tab==='tab-stale')filterStale();
   else if(tab==='tab-provisioning')filterProv();
   else filterTlop();
-}}
-function filterBacklog(){{
+}
+function filterBacklog(){
   var s=document.getElementById('b-search').value.toLowerCase(),
       manager=document.getElementById('b-manager').value,
       agent=document.getElementById('b-agent').value,
@@ -1674,7 +1674,7 @@ function filterBacklog(){{
       upgrade=document.getElementById('b-upgrade').value,
       org=document.getElementById('b-org').value;
   var rows=document.querySelectorAll('#backlogBody tr.ticket-row'),vis=0;
-  rows.forEach(function(r){{
+  rows.forEach(function(r){
     var dsu=parseInt(r.dataset.dsu)||0;
     var show=(!s||r.textContent.toLowerCase().includes(s))&&
       (!manager||r.dataset.agent.includes(manager))&&
@@ -1685,10 +1685,10 @@ function filterBacklog(){{
       (!upgrade||r.dataset.upgrade.includes(upgrade))&&
       (!org||r.dataset.org===org);
     r.style.display=show?'':'none';if(show)vis++;
-  }});
+  });
   document.getElementById('b-count').textContent=vis+' tickets shown';
-}}
-function filterEsc(){{
+}
+function filterEsc(){
   var s=document.getElementById('e-search').value.toLowerCase(),
       manager=document.getElementById('e-manager').value,
       agent=document.getElementById('e-agent').value,
@@ -1700,7 +1700,7 @@ function filterEsc(){{
       upgrade=document.getElementById('e-upgrade').value,
       org=document.getElementById('e-org').value;
   var rows=document.querySelectorAll('#escBody tr.esc-row'),vis=0;
-  rows.forEach(function(r){{
+  rows.forEach(function(r){
     var dsu=parseInt(r.dataset.dsu)||0;
     var show=(!s||r.textContent.toLowerCase().includes(s))&&
       (!manager||r.dataset.agent.includes(manager))&&
@@ -1713,10 +1713,10 @@ function filterEsc(){{
       (!upgrade||(r.dataset.upgrade||'').includes(upgrade))&&
       (!org||r.dataset.org===org);
     r.style.display=show?'':'none';if(show)vis++;
-  }});
+  });
   document.getElementById('e-count').textContent=vis+' escalations shown';
-}}
-function filterStale(){{
+}
+function filterStale(){
   var s=document.getElementById('s-search').value.toLowerCase(),
       threshold=parseInt(document.getElementById('s-threshold').value)||2,
       manager=document.getElementById('s-manager').value,
@@ -1725,7 +1725,7 @@ function filterStale(){{
       status=document.getElementById('s-status').value,
       org=document.getElementById('s-org').value;
   var rows=document.querySelectorAll('#staleBody tr.ticket-row'),vis=0;
-  rows.forEach(function(r){{
+  rows.forEach(function(r){
     var dsu=parseInt(r.dataset.dsu)||0;
     var show=dsu>threshold&&
       (!s||r.textContent.toLowerCase().includes(s))&&
@@ -1735,10 +1735,10 @@ function filterStale(){{
       (!status||r.dataset.status===status)&&
       (!org||r.dataset.org===org);
     r.style.display=show?'':'none';if(show)vis++;
-  }});
+  });
   document.getElementById('s-count').textContent=vis+' stale tickets shown';
-}}
-function filterProv(){{
+}
+function filterProv(){
   var s=document.getElementById('p-search').value.toLowerCase(),
       agent=document.getElementById('p-agent').value,
       prio=document.getElementById('p-priority').value,
@@ -1747,7 +1747,7 @@ function filterProv(){{
       upgrade=document.getElementById('p-upgrade').value,
       org=document.getElementById('p-org').value;
   var rows=document.querySelectorAll('#provBody tr.ticket-row'),vis=0;
-  rows.forEach(function(r){{
+  rows.forEach(function(r){
     var dsu=parseInt(r.dataset.dsu)||0;
     var show=(!s||r.textContent.toLowerCase().includes(s))&&
       (!agent||r.dataset.agent===agent)&&
@@ -1757,10 +1757,10 @@ function filterProv(){{
       (!upgrade||r.dataset.upgrade.includes(upgrade))&&
       (!org||r.dataset.org===org);
     r.style.display=show?'':'none';if(show)vis++;
-  }});
+  });
   document.getElementById('p-count').textContent=vis+' tickets shown';
-}}
-function filterTlop(){{
+}
+function filterTlop(){
   var s=document.getElementById('t-search').value.toLowerCase(),
       agent=document.getElementById('t-agent').value,
       prio=document.getElementById('t-priority').value,
@@ -1769,7 +1769,7 @@ function filterTlop(){{
       upgrade=document.getElementById('t-upgrade').value,
       org=document.getElementById('t-org').value;
   var rows=document.querySelectorAll('#tlopBody tr.ticket-row'),vis=0;
-  rows.forEach(function(r){{
+  rows.forEach(function(r){
     var dsu=parseInt(r.dataset.dsu)||0;
     var show=(!s||r.textContent.toLowerCase().includes(s))&&
       (!agent||r.dataset.agent===agent)&&
@@ -1779,9 +1779,9 @@ function filterTlop(){{
       (!upgrade||r.dataset.upgrade.includes(upgrade))&&
       (!org||r.dataset.org===org);
     r.style.display=show?'':'none';if(show)vis++;
-  }});
+  });
   document.getElementById('t-count').textContent=vis+' tickets shown';
-}}
+}
 filterBacklog();filterStale();filterProv();filterTlop();
 </script>
 </body>
