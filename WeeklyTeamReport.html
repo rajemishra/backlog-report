@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly Team Report &mdash; Aug 3-9, 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Calibri',sans-serif;background:#1F1E5D;overflow:hidden;height:100vh}
+.slide{display:none;height:calc(100vh - 52px);overflow-y:auto;background:#f4f4f8}
+.slide.active{display:block}
+.slide-header{background:#1F1E5D;color:white;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.slide-header h2{font-size:1.1rem;font-weight:700}
+.date-badge{background:#706CFF;color:white;border-radius:20px;padding:4px 14px;font-size:.76rem;font-weight:600}
+.slide-body{padding:18px 24px}
+#slide-0{background:linear-gradient(135deg,#1F1E5D 0%,#706CFF 100%)!important;color:white}
+#slide-0 .slide-body{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 52px);text-align:center;gap:14px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:white;border-radius:10px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:4px solid #706CFF}
+.kpi .v{font-size:1.8rem;font-weight:800;color:#1F1E5D}
+.kpi .l{font-size:.74rem;color:#5A5D77;margin-top:2px}
+.kpi.green{border-left-color:#00DF8F}
+.kpi.red{border-left-color:#e74c3c}
+.kpi.amber{border-left-color:#f39c12}
+.tbl-wrap{overflow-x:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+table{width:100%;border-collapse:collapse;background:white;font-size:.79rem}
+th{background:#1F1E5D;color:white;padding:8px 9px;text-align:left;white-space:nowrap}
+td{padding:6px 9px;border-bottom:1px solid #eee;vertical-align:middle}
+tr:hover td{background:#f0f0f8}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.chart-box{background:white;border-radius:10px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.chart-box h4{color:#1F1E5D;font-size:.82rem;margin-bottom:8px;font-weight:700}
+.flag-card{background:white;border-radius:10px;padding:11px 14px;border-left:4px solid #e74c3c;box-shadow:0 2px 6px rgba(0,0,0,.06);margin-bottom:8px}
+.flag-card.amber{border-left-color:#f39c12}
+.flag-card.green{border-left-color:#00DF8F}
+.flag-card.violet{border-left-color:#706CFF}
+.flag-card h4{font-size:.84rem;color:#1F1E5D;margin-bottom:3px;font-weight:700}
+.flag-card p{font-size:.77rem;color:#5A5D77}
+.hero{background:linear-gradient(135deg,#1F1E5D,#706CFF);color:white;border-radius:12px;padding:18px;margin-bottom:14px}
+.hero h3{font-size:1.1rem;margin-bottom:10px}
+.hero-kpis{display:flex;flex-wrap:wrap;gap:10px}
+.hkpi{background:rgba(255,255,255,.15);border-radius:8px;padding:9px 14px;min-width:90px}
+.hkpi .v{font-size:1.4rem;font-weight:800}
+.hkpi .l{font-size:.72rem;opacity:.85}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:10px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col-card{background:white;border-radius:10px;padding:13px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.col-card h4{color:#706CFF;font-size:.8rem;font-weight:700;margin-bottom:7px;border-bottom:2px solid #E8E4F8;padding-bottom:5px}
+.col-card li,.col-card p{font-size:.78rem;color:#3a3a3a;margin-bottom:4px}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:7px 16px;font-size:.84rem}
+.pill b{display:block;font-size:1.2rem;margin-bottom:1px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.st{color:#1F1E5D;font-size:.9rem;font-weight:700;margin:12px 0 7px}
+a{color:#706CFF}
+.nav-bar{position:fixed;bottom:0;left:0;right:0;height:52px;background:#1F1E5D;display:flex;align-items:center;justify-content:center;gap:14px;z-index:100}
+.nav-bar button{background:#706CFF;color:white;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;font-size:.86rem;font-weight:600}
+.nav-bar button:hover{background:#5a56d9}
+.dots{display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.2s}
+.dot.active{background:#C8FF49;transform:scale(1.3)}
+.sc{color:rgba(255,255,255,.7);font-size:.78rem;min-width:44px;text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;margin:1px}
+.tag.sdk{background:#E8E4F8;color:#1F1E5D}
+.tag.skill{background:#d4edda;color:#155724}
+.tag.report{background:#d1ecf1;color:#0c5460}
+.tag.lead{background:#FFEB9C;color:#9C6500}
+</style>
+</head>
+<body>
+<div class="slide active" id="slide-0">
+  <div class="slide-body">
+    <div>
+      <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:6px">🗓️ Weekly Team Report</h1>
+      <p style="font-size:1rem;opacity:.85">August 3, 2026 &ndash; August 9, 2026 &nbsp;&middot;&nbsp; APJ/EMEA &amp; NA/LATAM Acoustic Support</p>
+      <p style="font-size:.82rem;opacity:.65;margin-top:3px">Report generated: August 10, 2026 &middot; Source: team_data.json (per-agent Zendesk queries)</p>
+    </div>
+    <div class="pills">
+      <div class="pill"><b>173</b>Tickets Solved</div>
+      <div class="pill"><b>165</b>New Assigned</div>
+      <div class="pill"><b>9.1</b>Avg / Agent</div>
+      <div class="pill"><b>Balaji Prasad (21)</b>Top Performer</div>
+      <div class="pill"><b>213</b>Open Backlog</div>
+      <div class="pill"><b>2</b>Escalated Cases (this week)</div>
+      <div class="pill"><b>19 good &middot; 2 bad</b>CSAT</div>
+      <div class="pill"><b>10 of 19</b>Agents On Track</div>
+    </div>
+  </div>
+</div>
+<div class="slide" id="slide-1">
+  <div class="slide-header"><h2>📊 Team Performance Overview</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="kpi-grid">
+      <div class="kpi green"><div class="v">173</div><div class="l">Total Solved (19 agents)</div></div>
+      <div class="kpi"><div class="v">165</div><div class="l">New Assigned</div></div>
+      <div class="kpi amber"><div class="v">213</div><div class="l">Open Backlog</div></div>
+      <div class="kpi"><div class="v">9.1</div><div class="l">Avg Solved / Agent</div></div>
+      <div class="kpi green"><div class="v">10</div><div class="l">Agents On Track (🟢)</div></div>
+      <div class="kpi red"><div class="v">0</div><div class="l">Zero Output</div></div>
+    </div>
+    <div class="two-col">
+      <div class="col-card"><h4>🌏 Team APJ/EMEA (Rajeshwar)</h4>
+        <p>Solved: <b>100</b> &middot; New: <b>90</b> &middot; Open: <b>107</b></p>
+        <p>Avg/agent: <b>11.1</b> &middot; On track: <b>5</b> of 9</p>
+        <p>Top: Balaji Prasad (21), Rishi Pokarna (20), Tushar Chitnis (13)</p>
+      </div>
+      <div class="col-card"><h4>🌎 Team NA/LATAM (Keith)</h4>
+        <p>Solved: <b>73</b> &middot; New: <b>75</b> &middot; Open: <b>106</b></p>
+        <p>Avg/agent: <b>7.3</b> &middot; On track: <b>5</b> of 10</p>
+        <p>Top: Ronnie Stephens (14), Patricia Reifeiss (10), Arnab Dutta (9)</p>
+      </div>
+    </div>
+    <div class="charts-row">
+      <div class="chart-box"><h4>Solved This Week by Agent</h4><canvas id="chart-solved" height="220"></canvas></div>
+      <div class="chart-box"><h4>Open Backlog vs New Assigned</h4><canvas id="chart-combo" height="220"></canvas></div>
+    </div>
+  </div>
+</div>
+<div class="slide" id="slide-2apj">
+  <div class="slide-header"><h2>🌏 Team APJ/EMEA Breakdown</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Agent</th><th>Solved</th><th>New</th><th>Open</th><th>BL Ratio</th>
+        <th>Urgent</th><th>High</th><th>Jira Esc.</th><th>Voice</th>
+        <th>Client Esc.</th><th>Hot Cases</th><th>Workload</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+<td><b>Rishi Pokarna</b></td><td>20</td><td>18</td><td>9</td><td>0.45:1</td>
+<td>0</td><td>3</td><td>6</td><td>2</td>
+<td>1</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Priyanka Joshi</b></td><td>12</td><td>10</td><td>15</td><td>1.25:1</td>
+<td>0</td><td>1</td><td>3</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Balaji Prasad</b></td><td>21</td><td>14</td><td>8</td><td>0.38:1</td>
+<td>0</td><td>2</td><td>6</td><td>0</td>
+<td>3</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Anshu Sarda</b></td><td>7</td><td>5</td><td>9</td><td>1.29:1</td>
+<td>0</td><td>2</td><td>3</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Ishan Gadoo</b></td><td>9</td><td>7</td><td>23</td><td>2.56:1</td>
+<td>0</td><td>10</td><td>17</td><td>2</td>
+<td>1</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Tushar Chitnis</b></td><td>13</td><td>11</td><td>11</td><td>0.85:1</td>
+<td>0</td><td>4</td><td>10</td><td>0</td>
+<td>0</td><td>2</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Vaishnavi Dupare</b></td><td>7</td><td>8</td><td>8</td><td>1.14:1</td>
+<td>0</td><td>3</td><td>3</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Raksha Bondanthila</b></td><td>6</td><td>9</td><td>9</td><td>1.5:1</td>
+<td>0</td><td>2</td><td>5</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Potnuru Venkatesh</b></td><td>5</td><td>8</td><td>15</td><td>3.0:1</td>
+<td>0</td><td>3</td><td>10</td><td>2</td>
+<td>1</td><td>3</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+        <tr style="background:#1F1E5D;color:white;font-weight:bold">
+<td>TOTAL</td><td>100</td><td>90</td><td>107</td><td>1.07:1</td>
+<td>0</td><td>30</td><td>63</td><td>6</td><td>6</td><td>8</td><td>-</td>
+</tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="slide" id="slide-2na">
+  <div class="slide-header"><h2>🌎 Team NA/LATAM Breakdown</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Agent</th><th>Solved</th><th>New</th><th>Open</th><th>BL Ratio</th>
+        <th>Urgent</th><th>High</th><th>Jira Esc.</th><th>Voice</th>
+        <th>Client Esc.</th><th>Hot Cases</th><th>Workload</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+<td><b>Phuong Nguyen</b></td><td>1</td><td>0</td><td>7</td><td>7.0:1</td>
+<td>0</td><td>7</td><td>6</td><td>0</td>
+<td>1</td><td>0</td><td><span style="background:#FFC7CE;color:#9C0006;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🔴 Low Output</span></td>
+</tr>
+<tr>
+<td><b>Mike Watkin</b></td><td>5</td><td>6</td><td>10</td><td>2.0:1</td>
+<td>0</td><td>5</td><td>4</td><td>0</td>
+<td>0</td><td>1</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Patricia Reifeiss</b></td><td>10</td><td>11</td><td>10</td><td>1.0:1</td>
+<td>0</td><td>2</td><td>5</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Ronnie Stephens</b></td><td>14</td><td>17</td><td>10</td><td>0.71:1</td>
+<td>0</td><td>2</td><td>3</td><td>20</td>
+<td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Noah Vazquez-Grell</b></td><td>4</td><td>4</td><td>8</td><td>2.0:1</td>
+<td>0</td><td>1</td><td>2</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Arnab Dutta</b></td><td>9</td><td>7</td><td>6</td><td>0.67:1</td>
+<td>0</td><td>1</td><td>5</td><td>0</td>
+<td>0</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Ratnesh Yadav</b></td><td>6</td><td>9</td><td>18</td><td>3.0:1</td>
+<td>0</td><td>3</td><td>9</td><td>0</td>
+<td>0</td><td>1</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+<tr>
+<td><b>Shashikant Patil</b></td><td>9</td><td>7</td><td>18</td><td>2.0:1</td>
+<td>0</td><td>5</td><td>14</td><td>0</td>
+<td>1</td><td>3</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Rahul Paditkar</b></td><td>9</td><td>8</td><td>9</td><td>1.0:1</td>
+<td>0</td><td>2</td><td>7</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span></td>
+</tr>
+<tr>
+<td><b>Akashkumar Singh</b></td><td>6</td><td>6</td><td>10</td><td>1.67:1</td>
+<td>0</td><td>4</td><td>6</td><td>0</td>
+<td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span></td>
+</tr>
+        <tr style="background:#1F1E5D;color:white;font-weight:bold">
+<td>TOTAL</td><td>73</td><td>75</td><td>106</td><td>1.45:1</td>
+<td>0</td><td>32</td><td>61</td><td>20</td><td>2</td><td>6</td><td>-</td>
+</tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="slide" id="slide-tam">
+  <div class="slide-header"><h2>🤝 TAM Overview</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="kpi" style="border-left-color:#706CFF"><div class="v">0</div><div class="l">Vaibhav Kadam &middot; APJ</div></div>
+<div class="kpi" style="border-left-color:#706CFF"><div class="v">6</div><div class="l">Balaji Bansode &middot; APJ</div></div>
+<div class="kpi" style="border-left-color:#706CFF"><div class="v">1</div><div class="l">John Katic &middot; NA</div></div>
+<div class="kpi" style="border-left-color:#706CFF"><div class="v">0</div><div class="l">Justin Richter &middot; NA</div></div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:14px"><table>
+      <thead><tr><th>TAM</th><th>Team</th><th>Solved</th><th>New</th><th>Open</th><th>CE</th><th>HC</th><th>CSAT✓</th></tr></thead>
+      <tbody>
+        <tr style="background:#dce8ff"><td><b>Vaibhav Kadam</b></td><td>APJ</td><td>0</td><td>0</td><td>3</td><td>0</td><td>3</td><td>0</td></tr>
+<tr style="background:#dce8ff"><td><b>Balaji Bansode</b></td><td>APJ</td><td>6</td><td>2</td><td>11</td><td>1</td><td>1</td><td>1</td></tr>
+<tr style="background:#dce8ff"><td><b>John Katic</b></td><td>NA</td><td>1</td><td>2</td><td>3</td><td>0</td><td>0</td><td>0</td></tr>
+<tr style="background:#dce8ff"><td><b>Justin Richter</b></td><td>NA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="slide" id="slide-3">
+  <div class="slide-header"><h2>🔥 Hot Cases / Escalations</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="kpi-grid">
+      <div class="kpi red"><div class="v">2</div><div class="l">Hot Cases Escalated This Week</div></div>
+      <div class="kpi"><div class="v">9</div><div class="l">Client Esc. (open+solved, all-time flag)</div></div>
+      <div class="kpi amber"><div class="v">18</div><div class="l">Hot Cases (open+solved, all-time flag)</div></div>
+    </div>
+    <p style="font-size:.74rem;color:#5A5D77;margin-bottom:10px">Escalation date is sourced from the Hot Case / Client Escalated date custom fields (authoritative), not the boolean flag or tag presence alone &mdash; both can lag. Escalations where a team member is only a collaborator (not primary assignee) are included here but excluded from the agent breakdown tables.</p>
+    <div class="flag-card amber"><h4>🔥 SMS not being received via API or UI 'FOIRFOUILLE' (Kiss The Bride) (#410352)</h4><p>Ishan Gadoo &middot; Acoustic &middot; Hot Case &middot; Escalated 2026-08-03 &middot; Priority: low &middot; Status: open &middot; Jira: https://crm.karix.com/support/tickets/5897462 <span style="color:#9C6500">&mdash; Assigned within team roster (Ishan Gadoo).</span></p></div>
+<div class="flag-card amber"><h4>🔥 Acoustic RRDE not working (#411061)</h4><p>Andrew Morio (not on team roster) &middot; ELECTROLUX HOME PRODUCTS, INC. &middot; Hot Case &middot; Escalated 2026-08-07 &middot; Priority: high &middot; Status: solved <span style="color:#9C6500">&mdash; Tushar Chitnis (Team APJ/EMEA) is a collaborator/follower on this ticket, not the primary assignee -- outside standard assignee-based roster queries.</span></p></div>
+
+  </div>
+</div>
+<div class="slide" id="slide-4">
+  <div class="slide-header"><h2>⭐ CSAT</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="kpi-grid">
+      <div class="kpi green"><div class="v">19</div><div class="l">Good Ratings</div></div>
+      <div class="kpi red"><div class="v">2</div><div class="l">Bad Ratings</div></div>
+      <div class="kpi"><div class="v">21</div><div class="l">Surveys Offered</div></div>
+      <div class="kpi"><div class="v">90%</div><div class="l">CSAT Score</div></div>
+      <div class="kpi"><div class="v">100%</div><div class="l">Response Rate</div></div>
+    </div>
+    <div class="chart-box" style="margin-top:14px"><h4>CSAT by Agent (Good vs Bad)</h4><canvas id="chart-csat" height="200"></canvas></div>
+  </div>
+</div>
+<div class="slide" id="slide-5">
+  <div class="slide-header"><h2>🚩 Flags &amp; Highlights</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="kpi-grid">
+      <div class="kpi green"><div class="v">10</div><div class="l">🟢 On Track</div></div>
+      <div class="kpi amber"><div class="v">8</div><div class="l">🟡 Below Avg</div></div>
+      <div class="kpi red"><div class="v">1</div><div class="l">🔴 Low Output</div></div>
+    </div>
+    <div class="flag-card"><h4>🔴 Phuong Nguyen &mdash; Low Output</h4><p>Solved 1 this week, backlog ratio 7.0:1, oldest open ticket 472 days.</p></div>
+<div class="flag-card amber"><h4>🟡 Anshu Sarda &mdash; Below Average</h4><p>Solved 7 this week, 9 open, backlog ratio 1.29:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Vaishnavi Dupare &mdash; Below Average</h4><p>Solved 7 this week, 8 open, backlog ratio 1.14:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Raksha Bondanthila &mdash; Below Average</h4><p>Solved 6 this week, 9 open, backlog ratio 1.5:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Potnuru Venkatesh &mdash; Below Average</h4><p>Solved 5 this week, 15 open, backlog ratio 3.0:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Mike Watkin &mdash; Below Average</h4><p>Solved 5 this week, 10 open, backlog ratio 2.0:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Noah Vazquez-Grell &mdash; Below Average</h4><p>Solved 4 this week, 8 open, backlog ratio 2.0:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Ratnesh Yadav &mdash; Below Average</h4><p>Solved 6 this week, 18 open, backlog ratio 3.0:1.</p></div>
+<div class="flag-card amber"><h4>🟡 Akashkumar Singh &mdash; Below Average</h4><p>Solved 6 this week, 10 open, backlog ratio 1.67:1.</p></div>
+<div class="flag-card green"><h4>🟢 Balaji Prasad &mdash; Top Performer</h4><p>Solved 21 tickets this week, 14 new assigned, CSAT 1 good / 0 bad.</p></div>
+<div class="flag-card green"><h4>🟢 Rishi Pokarna &mdash; Top Performer</h4><p>Solved 20 tickets this week, 18 new assigned, CSAT 1 good / 1 bad.</p></div>
+<div class="flag-card green"><h4>🟢 Ronnie Stephens &mdash; Top Performer</h4><p>Solved 14 tickets this week, 17 new assigned, CSAT 0 good / 0 bad.</p></div>
+<div class="flag-card violet"><h4>📦 Ishan Gadoo &mdash; Backlog Watch</h4><p>23 open tickets, oldest 838 days, avg age 103.7 days.</p></div>
+<div class="flag-card violet"><h4>📦 Ratnesh Yadav &mdash; Backlog Watch</h4><p>18 open tickets, oldest 752 days, avg age 98.5 days.</p></div>
+<div class="flag-card violet"><h4>📦 Shashikant Patil &mdash; Backlog Watch</h4><p>18 open tickets, oldest 748 days, avg age 149.0 days.</p></div>
+
+  </div>
+</div>
+<div class="slide" id="slide-9apj">
+  <div class="slide-header"><h2>💡 Coaching &mdash; Team APJ/EMEA</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="team-hdr" style="color:#1F1E5D;font-weight:700;margin-bottom:10px">🌏 Team APJ/EMEA &mdash; Rajeshwar Mishra | Agents: 100 solved &middot; 11.1 avg &middot; 5 on track</div>
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Rishi Pokarna</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 20 &middot; New: 18 &middot; Open: 9 &middot; Ratio: 0.45:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 675 days old &mdash; review for staleness.</li><li>1 bad CSAT rating(s) this week.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 20 tickets, contributing strongly to team throughput.</li><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (9 tickets linked).</li><li>Managing 1 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Rishi's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Priyanka Joshi</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 12 &middot; New: 10 &middot; Open: 15 &middot; Ratio: 1.25:1 &middot; CSAT: 2 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 166 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 12 tickets, contributing strongly to team throughput.</li><li>2 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (5 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Priyanka's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Balaji Prasad</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 21 &middot; New: 14 &middot; Open: 8 &middot; Ratio: 0.38:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 823 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 21 tickets, contributing strongly to team throughput.</li><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (10 tickets linked).</li><li>Managing 3 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Balaji's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Anshu Sarda</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 &middot; New: 5 &middot; Open: 9 &middot; Ratio: 1.29:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 89 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Actively escalating to engineering via Jira (3 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Anshu to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Ishan Gadoo</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 9 &middot; New: 7 &middot; Open: 23 &middot; Ratio: 2.56:1 &middot; CSAT: 3 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 2.56:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 838 days old &mdash; review for staleness.</li><li>1 bad CSAT rating(s) this week.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 9 tickets, contributing strongly to team throughput.</li><li>3 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (4 tickets linked).</li><li>Managing 1 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Ishan's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Tushar Chitnis</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 13 &middot; New: 11 &middot; Open: 11 &middot; Ratio: 0.85:1 &middot; CSAT: 2 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 768 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 13 tickets, contributing strongly to team throughput.</li><li>2 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (6 tickets linked).</li><li>Managing 0 client-escalated / 2 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Tushar's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Vaishnavi Dupare</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 &middot; New: 8 &middot; Open: 8 &middot; Ratio: 1.14:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 27 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Actively escalating to engineering via Jira (4 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Vaishnavi to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Raksha Bondanthila</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 6 &middot; New: 9 &middot; Open: 9 &middot; Ratio: 1.5:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 164 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Actively escalating to engineering via Jira (5 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Raksha to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Potnuru Venkatesh</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 5 &middot; New: 8 &middot; Open: 15 &middot; Ratio: 3.0:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 3.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 684 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (2 tickets linked).</li><li>Managing 1 client-escalated / 3 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Potnuru to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+  </div>
+</div>
+<div class="slide" id="slide-9na">
+  <div class="slide-header"><h2>💡 Coaching &mdash; Team NA/LATAM</h2><span class="date-badge">Aug 3-9, 2026</span></div>
+  <div class="slide-body">
+    <div class="team-hdr" style="color:#1F1E5D;font-weight:700;margin-bottom:10px">🌎 Team NA/LATAM &mdash; Keith Cook | Agents: 73 solved &middot; 7.3 avg &middot; 5 on track</div>
+    <div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Phuong Nguyen</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 1 &middot; New: 0 &middot; Open: 7 &middot; Ratio: 7.0:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#FFC7CE;color:#9C0006;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🔴 Low Output</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved only 1 ticket(s) this week &mdash; well below team average of 9.1.</li><li>Backlog ratio 7.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 472 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Actively escalating to engineering via Jira (1 tickets linked).</li><li>Managing 1 client-escalated / 0 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">1:1 to unblock output &mdash; review Phuong Nguyen's open queue together and identify any stuck tickets or skill gaps.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Mike Watkin</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 5 &middot; New: 6 &middot; Open: 10 &middot; Ratio: 2.0:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 2.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 717 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (1 tickets linked).</li><li>Managing 0 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Mike to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Patricia Reifeiss</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 10 &middot; New: 11 &middot; Open: 10 &middot; Ratio: 1.0:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 32 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 10 tickets, contributing strongly to team throughput.</li><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (3 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Patricia's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Ronnie Stephens</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 14 &middot; New: 17 &middot; Open: 10 &middot; Ratio: 0.71:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 32 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 14 tickets, contributing strongly to team throughput.</li><li>Actively escalating to engineering via Jira (3 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Ronnie's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Noah Vazquez-Grell</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 4 &middot; New: 4 &middot; Open: 8 &middot; Ratio: 2.0:1 &middot; CSAT: 2 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 2.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 26 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>2 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (3 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Noah to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Arnab Dutta</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 9 &middot; New: 7 &middot; Open: 6 &middot; Ratio: 0.67:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 49 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 9 tickets, contributing strongly to team throughput.</li><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (2 tickets linked).</li><li>Managing 0 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Arnab's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Ratnesh Yadav</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 6 &middot; New: 9 &middot; Open: 18 &middot; Ratio: 3.0:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 3.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 752 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Actively escalating to engineering via Jira (1 tickets linked).</li><li>Managing 0 client-escalated / 1 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Ratnesh to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Shashikant Patil</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 9 &middot; New: 7 &middot; Open: 18 &middot; Ratio: 2.0:1 &middot; CSAT: 0 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 2.0:1 &mdash; open tickets accumulating faster than solve rate.</li><li>Oldest open ticket is 748 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 9 tickets, contributing strongly to team throughput.</li><li>Actively escalating to engineering via Jira (6 tickets linked).</li><li>Managing 1 client-escalated / 3 hot-case ticket(s).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Shashikant's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Rahul Paditkar</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 9 &middot; New: 8 &middot; Open: 9 &middot; Ratio: 1.0:1 &middot; CSAT: 1 good</span>
+    </div>
+    <span style="background:#C6EFCE;color:#276221;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟢 On Track</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 475 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 9 tickets, contributing strongly to team throughput.</li><li>1 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (6 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Recognize Rahul's strong output this week; consider for peer mentoring or KB article authorship.</span>
+  </div>
+</div>
+<div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <b style="font-size:.95rem">Akashkumar Singh</b>
+      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 6 &middot; New: 6 &middot; Open: 10 &middot; Ratio: 1.67:1 &middot; CSAT: 2 good</span>
+    </div>
+    <span style="background:#FFEB9C;color:#9C6500;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600">🟡 Below Avg</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
+      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Oldest open ticket is 251 days old &mdash; review for staleness.</li></ul>
+    </div>
+    <div style="background:#f5fff8;padding:10px 16px">
+      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
+      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>2 good CSAT rating(s) this week.</li><li>Actively escalating to engineering via Jira (5 tickets linked).</li></ul>
+    </div>
+  </div>
+  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
+    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip &mdash; </span>
+    <span style="font-size:.78rem;color:#3a3a3a">Encourage Akashkumar to prioritize aging tickets first; consider pairing on backlog ratio reduction.</span>
+  </div>
+</div>
+  </div>
+</div><div class="nav-bar">
+  <button onclick="navigate(-1)">&#8592; Prev</button>
+  <div class="dots" id="dots"></div>
+  <span class="sc" id="sc">1 / 10</span>
+  <button onclick="navigate(1)">Next &#8594;</button>
+</div><script>
+var TOTAL=10,cur=0;
+var slides=document.querySelectorAll('.slide');
+var dotsEl=document.getElementById('dots');
+var scEl=document.getElementById('sc');
+for(var i=0;i<TOTAL;i++){
+  var d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  (function(idx){d.onclick=function(){goTo(idx);}})(i);
+  dotsEl.appendChild(d);
+}
+function goTo(n){
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  cur=Math.max(0,Math.min(TOTAL-1,n));
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  scEl.textContent=(cur+1)+' / '+TOTAL;
+  initCharts(cur);
+}
+function navigate(d){goTo(cur+d);}
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft')navigate(-1);
+  if(e.key==='ArrowRight')navigate(1);
+});
+var ci={};
+var cL=["Rishi", "Priyanka", "Balaji", "Anshu", "Ishan", "Tushar", "Vaishnavi", "Raksha", "Potnuru", "Phuong", "Mike", "Patricia", "Ronnie", "Noah", "Arnab", "Ratnesh", "Shashikant", "Rahul", "Akashkumar"];
+var cSv=[20, 12, 21, 7, 9, 13, 7, 6, 5, 1, 5, 10, 14, 4, 9, 6, 9, 9, 6];
+var cBl=[9, 15, 8, 9, 23, 11, 8, 9, 15, 7, 10, 10, 10, 8, 6, 18, 18, 9, 10];
+var cNw=[18, 10, 14, 5, 7, 11, 8, 9, 8, 0, 6, 11, 17, 4, 7, 9, 7, 8, 6];
+var cCg=[1, 2, 1, 0, 3, 2, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 0, 1, 2];
+var cCb=[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+function initCharts(slide){
+  if(ci[slide])return;ci[slide]=true;
+  if(slide===1){
+    new Chart(document.getElementById('chart-solved'),{type:'bar',data:{labels:cL,datasets:[{label:'Solved',data:cSv,backgroundColor:cSv.map(function(v){return v>=8?'#C6EFCE':v>=4?'#FFEB9C':'#FFC7CE';}),borderWidth:0}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+    new Chart(document.getElementById('chart-combo'),{type:'bar',data:{labels:cL,datasets:[{label:'Open Backlog',data:cBl,backgroundColor:'#FFC7CE'},{label:'New Assigned',data:cNw,backgroundColor:'#C6EFCE'}]},options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true}}}});
+  }
+  if(slide===6){
+    new Chart(document.getElementById('chart-csat'),{type:'bar',data:{labels:cL,datasets:[{label:'Good',data:cCg,backgroundColor:'#C6EFCE',borderColor:'#276221',borderWidth:1},{label:'Bad',data:cCb,backgroundColor:'#FFC7CE',borderColor:'#9C0006',borderWidth:1}]},options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,ticks:{stepSize:1},max:4}}}});
+  }
+}
+initCharts(0);
+</script>
+</body></html>
