@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Weekly Team Report — Aug 17–23, 2026</title>
+<title>Weekly Team Report — Aug 31 – Sep 6, 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -60,47 +60,56 @@ a{color:#706CFF}
 .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.2s}
 .dot.active{background:#C8FF49;transform:scale(1.3)}
 .sc{color:rgba(255,255,255,.7);font-size:.78rem;min-width:44px;text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;margin:1px}
+.team-hdr{background:#1F1E5D;color:white;padding:9px 16px;border-radius:8px;font-size:.85rem;font-weight:700;margin-bottom:12px}
 </style>
 </head>
 <body>
+
+<!-- SLIDE 0: TITLE -->
 <div class="slide active" id="slide-0">
   <div class="slide-body">
     <div>
       <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:6px">🗓️ Weekly Team Report</h1>
-      <p style="font-size:1rem;opacity:.85">Aug 17, 2026 – Aug 23, 2026 &nbsp;·&nbsp; Acoustic Support Team</p>
-      <p style="font-size:.82rem;opacity:.65;margin-top:3px">Report generated: Aug 24, 2026 · Source: team_data.json (per-agent Zendesk queries)</p>
+      <p style="font-size:1rem;opacity:.85">Aug 31 – Sep 6, 2026 &nbsp;·&nbsp; Acoustic Support Team</p>
+      <p style="font-size:.82rem;opacity:.65;margin-top:3px">Report generated: Sep 6, 2026 · Source: team_data.json (per-agent Zendesk queries)</p>
     </div>
     <div class="pills">
-      <div class="pill"><b>143</b>Tickets Solved</div>
-      <div class="pill"><b>157</b>New Assigned</div>
-      <div class="pill"><b>11.9</b>Avg / Agent</div>
-      <div class="pill"><b>Potnuru Venkatesh (32)</b>Top Performer</div>
-      <div class="pill"><b>292</b>Open Backlog</div>
-      <div class="pill"><b>1</b>Escalated Cases</div>
-      <div class="pill"><b>19 good · 1 bad</b>CSAT</div>
-      <div class="pill"><b>6 of 15</b>Agents On Track</div>
+      <div class="pill"><b>169</b>Tickets Solved</div>
+      <div class="pill"><b>193</b>New Assigned</div>
+      <div class="pill"><b>13.0</b>Avg / Agent</div>
+      <div class="pill"><b>Ratnesh Yadav (25)</b>Top Performer</div>
+      <div class="pill"><b>359</b>Open Backlog</div>
+      <div class="pill"><b>7</b>Escalated Cases</div>
+      <div class="pill"><b>17 good · 1 bad</b>CSAT</div>
+      <div class="pill"><b>9 of 15</b>Agents On Track</div>
     </div>
   </div>
 </div>
+
+<!-- SLIDE 1: TEAM PERFORMANCE OVERVIEW -->
 <div class="slide" id="slide-1">
-  <div class="slide-header"><h2>📊 Team Performance Overview</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>📊 Team Performance Overview</h2><span class="date-badge">Aug 31 – Sep 6, 2026 · Agents only</span></div>
   <div class="slide-body">
     <div class="kpi-grid">
-      <div class="kpi green"><div class="v">143</div><div class="l">Tickets Solved</div></div>
-      <div class="kpi"><div class="v">157</div><div class="l">New Assigned</div></div>
-      <div class="kpi red"><div class="v">292</div><div class="l">Open Backlog</div></div>
-      <div class="kpi"><div class="v">11.9</div><div class="l">Avg Solved / Agent</div></div>
-      <div class="kpi red"><div class="v">3</div><div class="l">Zero Output Agents</div></div>
-      <div class="kpi amber"><div class="v">1</div><div class="l">Escalated Cases</div></div>
+      <div class="kpi green"><div class="v">169</div><div class="l">Tickets Solved</div></div>
+      <div class="kpi"><div class="v">193</div><div class="l">New Assigned</div></div>
+      <div class="kpi red"><div class="v">359</div><div class="l">Open Backlog</div></div>
+      <div class="kpi"><div class="v">13.0</div><div class="l">Avg Solved / Agent</div></div>
+      <div class="kpi amber"><div class="v">2</div><div class="l">Zero-Output Agents</div></div>
+      <div class="kpi green"><div class="v">9 / 15</div><div class="l">Agents On Track</div></div>
     </div>
+    <p style="font-size:.8rem;color:#5A5D77;margin-bottom:6px">New assigned (193) outpaced solved (169) this week — net backlog growth. Open backlog stands at 359 tickets across the 15-agent team.</p>
     <div class="charts-row">
       <div class="chart-box"><h4>Solved This Week by Agent</h4><canvas id="chart-solved" height="220"></canvas></div>
       <div class="chart-box"><h4>Open Backlog vs New Assigned</h4><canvas id="chart-combo" height="220"></canvas></div>
     </div>
   </div>
 </div>
+
+<!-- SLIDE 2: SUPPORT TEAM BREAKDOWN -->
 <div class="slide" id="slide-2">
-  <div class="slide-header"><h2>👥 Support Team Breakdown</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>🛠️ Support Team Breakdown</h2><span class="date-badge">Aug 31 – Sep 6, 2026 · 15 Agents</span></div>
   <div class="slide-body">
     <div class="tbl-wrap"><table>
       <thead><tr>
@@ -109,530 +118,323 @@ a{color:#706CFF}
         <th>Client Esc.</th><th>Hot Cases</th><th>Workload</th>
       </tr></thead>
       <tbody>
-        <tr style="background:">
-  <td>Potnuru Venkatesh</td><td>32</td><td>28</td><td>18</td><td>0.56:1</td>
-  <td>0</td><td>5</td><td>9</td><td>24</td>
-  <td>1</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>Shashikant Patil</td><td>26</td><td>21</td><td>24</td><td>0.92:1</td>
-  <td>0</td><td>7</td><td>12</td><td>3</td>
-  <td>2</td><td>4</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>Rishi Pokarna</td><td>24</td><td>20</td><td>22</td><td>0.92:1</td>
-  <td>0</td><td>9</td><td>9</td><td>0</td>
-  <td>1</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>Vaishnavi Dupare</td><td>4</td><td>5</td><td>19</td><td>4.75:1</td>
-  <td>0</td><td>6</td><td>5</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span></td>
-</tr>
-<tr style="background:">
-  <td>Raksha Bondanthila</td><td>10</td><td>6</td><td>8</td><td>0.8:1</td>
-  <td>0</td><td>3</td><td>5</td><td>0</td>
-  <td>0</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>Mike Watkin</td><td>7</td><td>7</td><td>13</td><td>1.86:1</td>
-  <td>0</td><td>9</td><td>7</td><td>0</td>
-  <td>1</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span></td>
-</tr>
-<tr style="background:">
-  <td>Arnab Dutta</td><td>7</td><td>9</td><td>15</td><td>2.14:1</td>
-  <td>0</td><td>9</td><td>1</td><td>0</td>
-  <td>0</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span></td>
-</tr>
-<tr style="background:">
-  <td>Ratnesh Yadav</td><td>10</td><td>18</td><td>39</td><td>3.9:1</td>
-  <td>0</td><td>8</td><td>8</td><td>2</td>
-  <td>0</td><td>1</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>Akashkumar Singh</td><td>10</td><td>11</td><td>14</td><td>1.4:1</td>
-  <td>0</td><td>6</td><td>6</td><td>2</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span></td>
-</tr>
-<tr style="background:">
-  <td>William Skaggs</td><td>7</td><td>8</td><td>28</td><td>4.0:1</td>
-  <td>0</td><td>5</td><td>1</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span></td>
-</tr>
-<tr style="background:">
-  <td>Sidharth Bambole</td><td>4</td><td>8</td><td>33</td><td>8.25:1</td>
-  <td>0</td><td>5</td><td>4</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span></td>
-</tr>
-<tr style="background:">
-  <td>Vrushali Surve</td><td>0</td><td>0</td><td>0</td><td>0.0:1</td>
-  <td>0</td><td>0</td><td>0</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span></td>
-</tr>
-<tr style="background:">
-  <td>Jeslin Jose</td><td>2</td><td>8</td><td>39</td><td>19.5:1</td>
-  <td>0</td><td>6</td><td>2</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span></td>
-</tr>
-<tr style="background:">
-  <td>Anthony Stankoski</td><td>0</td><td>8</td><td>20</td><td>20.0:1</td>
-  <td>0</td><td>2</td><td>2</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span></td>
-</tr>
-<tr style="background:">
-  <td>Riya Sisodia</td><td>0</td><td>0</td><td>0</td><td>0.0:1</td>
-  <td>0</td><td>0</td><td>0</td><td>0</td>
-  <td>0</td><td>0</td><td><span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span></td>
-</tr>
-        <tr style="background:#1F1E5D;color:white;font-weight:bold">
-  <td>Team Totals (Agents)</td><td>143</td><td>157</td><td>292</td>
-  <td>2.04:1</td>
-  <td>0</td><td>80</td>
-  <td>71</td><td>31</td>
-  <td>5</td><td>10</td><td>—</td>
-</tr>
+        <tr><td>Potnuru Venkatesh</td><td>17</td><td>17</td><td>17</td><td>1.0</td><td>0</td><td>3</td><td>9</td><td>10</td><td>1</td><td>3</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Shashikant Patil</td><td>16</td><td>20</td><td>35</td><td>2.19</td><td>0</td><td>14</td><td>8</td><td>2</td><td>2</td><td>4</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Rishi Pokarna</td><td>24</td><td>28</td><td>25</td><td>1.04</td><td>0</td><td>9</td><td>14</td><td>0</td><td>0</td><td>4</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Vaishnavi Dupare</td><td>17</td><td>21</td><td>24</td><td>1.41</td><td>0</td><td>10</td><td>6</td><td>0</td><td>0</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Raksha Bondanthila</td><td>16</td><td>18</td><td>17</td><td>1.06</td><td>0</td><td>3</td><td>12</td><td>0</td><td>0</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Mike Watkin</td><td>6</td><td>7</td><td>23</td><td>3.83</td><td>0</td><td>13</td><td>8</td><td>0</td><td>1</td><td>2</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 10px;border-radius:10px;font-weight:600">🟡 Below Avg</span></td></tr>
+        <tr><td>Arnab Dutta</td><td>16</td><td>14</td><td>14</td><td>0.88</td><td>0</td><td>6</td><td>4</td><td>0</td><td>0</td><td>1</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Ratnesh Yadav</td><td>25</td><td>28</td><td>42</td><td>1.68</td><td>0</td><td>9</td><td>10</td><td>0</td><td>0</td><td>3</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Akashkumar Singh</td><td>10</td><td>10</td><td>22</td><td>2.2</td><td>0</td><td>9</td><td>3</td><td>4</td><td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>William Skaggs</td><td>7</td><td>10</td><td>34</td><td>4.86</td><td>0</td><td>3</td><td>6</td><td>0</td><td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 10px;border-radius:10px;font-weight:600">🟡 Below Avg</span></td></tr>
+        <tr><td>Sidharth Bambole</td><td>8</td><td>5</td><td>28</td><td>3.5</td><td>0</td><td>4</td><td>6</td><td>0</td><td>0</td><td>0</td><td><span style="background:#C6EFCE;color:#276221;padding:2px 10px;border-radius:10px;font-weight:600">🟢 On Track</span></td></tr>
+        <tr><td>Vrushali Surve</td><td>1</td><td>2</td><td>20</td><td>20.0</td><td>0</td><td>4</td><td>2</td><td>0</td><td>0</td><td>0</td><td><span style="background:#FFC7CE;color:#9C0006;padding:2px 10px;border-radius:10px;font-weight:600">🔴 Low Output</span></td></tr>
+        <tr><td>Jeslin Jose</td><td>6</td><td>7</td><td>30</td><td>5.0</td><td>0</td><td>3</td><td>4</td><td>0</td><td>0</td><td>0</td><td><span style="background:#FFEB9C;color:#9C6500;padding:2px 10px;border-radius:10px;font-weight:600">🟡 Below Avg</span></td></tr>
+        <tr><td>Anthony Stankoski</td><td>0</td><td>5</td><td>25</td><td>25.0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td><span style="background:#FFC7CE;color:#9C0006;padding:2px 10px;border-radius:10px;font-weight:600">🔴 Low Output</span></td></tr>
+        <tr><td>Riya Sisodia</td><td>0</td><td>1</td><td>3</td><td>3.0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td><span style="background:#FFC7CE;color:#9C0006;padding:2px 10px;border-radius:10px;font-weight:600">🔴 Low Output</span></td></tr>
+        <tr style="background:#1F1E5D;color:white;font-weight:bold"><td>Team Total</td><td>169</td><td>193</td><td>359</td><td>2.12</td><td>0</td><td>92</td><td>93</td><td>16</td><td>4</td><td>20</td><td>—</td></tr>
       </tbody>
     </table></div>
   </div>
 </div>
+
+<!-- SLIDE TAM: TAM OVERVIEW -->
 <div class="slide" id="slide-tam">
-  <div class="slide-header"><h2>🤝 TAM Overview</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>🤝 TAM Overview</h2><span class="date-badge">Aug 31 – Sep 6, 2026</span></div>
   <div class="slide-body">
     <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
-      <div class="kpi" style="border-left-color:#706CFF"><div class="v">4</div><div class="l">Vaibhav Kadam</div></div>
-<div class="kpi" style="border-left-color:#706CFF"><div class="v">9</div><div class="l">Balaji Bansode</div></div>
-<div class="kpi" style="border-left-color:#706CFF"><div class="v">0</div><div class="l">John Katic</div></div>
-<div class="kpi" style="border-left-color:#706CFF"><div class="v">0</div><div class="l">Justin Richter</div></div>
+      <div class="kpi" style="border-left-color:#706CFF"><div class="v">4</div><div class="l">Vaibhav Kadam — Solved</div></div>
+      <div class="kpi" style="border-left-color:#706CFF"><div class="v">2</div><div class="l">Balaji Bansode — Solved</div></div>
+      <div class="kpi" style="border-left-color:#706CFF"><div class="v">1</div><div class="l">John Katic — Solved</div></div>
+      <div class="kpi" style="border-left-color:#706CFF"><div class="v">0</div><div class="l">Justin Richter — Solved</div></div>
     </div>
     <div class="tbl-wrap" style="margin-top:14px"><table>
       <thead><tr><th>TAM</th><th>Solved</th><th>New</th><th>Open</th><th>CE</th><th>HC</th><th>CSAT✓</th></tr></thead>
       <tbody>
-        <tr style="background:#dce8ff">
-  <td><b>Vaibhav Kadam</b></td><td>4</td><td>1</td>
-  <td>11</td><td>1</td><td>1</td><td>1</td>
-</tr>
-<tr style="background:#dce8ff">
-  <td><b>Balaji Bansode</b></td><td>9</td><td>2</td>
-  <td>9</td><td>1</td><td>2</td><td>0</td>
-</tr>
-<tr style="background:#dce8ff">
-  <td><b>John Katic</b></td><td>0</td><td>1</td>
-  <td>6</td><td>0</td><td>0</td><td>0</td>
-</tr>
-<tr style="background:#dce8ff">
-  <td><b>Justin Richter</b></td><td>0</td><td>0</td>
-  <td>0</td><td>0</td><td>0</td><td>0</td>
-</tr>
+        <tr style="background:#dce8ff"><td><b>Vaibhav Kadam</b></td><td>4</td><td>3</td><td>10</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr style="background:#dce8ff"><td><b>Balaji Bansode</b></td><td>2</td><td>1</td><td>9</td><td>1</td><td>3</td><td>0</td></tr>
+        <tr style="background:#dce8ff"><td><b>John Katic</b></td><td>1</td><td>1</td><td>9</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr style="background:#dce8ff"><td><b>Justin Richter</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
       </tbody>
     </table></div>
+    <p style="font-size:.78rem;color:#5A5D77;margin-top:10px">Justin Richter shows no ticket activity this week. Balaji Bansode carries the highest backlog ratio among TAMs (9 open vs 2 solved) and the most hot cases (3).</p>
   </div>
 </div>
+
+<!-- SLIDE 3: HOT CASES / ESCALATIONS -->
 <div class="slide" id="slide-3">
-  <div class="slide-header"><h2>🔥 Hot Cases / Escalations</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>🔥 Hot Cases / Escalations</h2><span class="date-badge">Aug 31 – Sep 6, 2026</span></div>
   <div class="slide-body">
     <div class="kpi-grid">
-      <div class="kpi red"><div class="v">1</div><div class="l">Escalations This Week</div></div>
+      <div class="kpi red"><div class="v">7</div><div class="l">Escalated This Week</div></div>
+      <div class="kpi"><div class="v">7</div><div class="l">Hot Case</div></div>
       <div class="kpi"><div class="v">0</div><div class="l">Client Escalated</div></div>
-      <div class="kpi"><div class="v">1</div><div class="l">Hot Cases</div></div>
+      <div class="kpi amber"><div class="v">5</div><div class="l">Still Open / Pending</div></div>
     </div>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Ticket</th><th>Subject</th><th>Agent</th><th>Org</th><th>Priority</th><th>Status</th><th>Type</th><th>Jira</th><th>Date</th></tr></thead>
-      <tbody><tr>
-  <td>411147</td><td>AIRES: Email tag not appearing in Insights reporting</td><td>Ratnesh Yadav</td>
-  <td>—</td><td>normal</td><td>open</td>
-  <td>Hot Case</td><td>CO-17711</td><td>2026-08-18</td>
-</tr></tbody>
+      <thead><tr><th>Ticket</th><th>Subject</th><th>Agent</th><th>Org</th><th>Priority</th><th>Status</th><th>Product</th><th>Date</th><th>Jira</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>411814</td><td>Acoustic Engage ImportList Jobs Stuck in WAITING Status</td><td>Potnuru Venkatesh</td><td>EnergyAustralia Services Pty Ltd</td><td>high</td><td>solved</td><td>Campaign</td><td>Sep 1</td><td>CO-17858</td><td>Hot Case</td></tr>
+        <tr><td>411592</td><td>Health Partners – Click Tracking (Phone Numbers) is not working as expected</td><td>Potnuru Venkatesh</td><td>—</td><td>high</td><td>pending</td><td>Campaign</td><td>Aug 31</td><td>—</td><td>Hot Case</td></tr>
+        <tr><td>411924</td><td>URGENT | Cannot publish Consent Strategy Form (Wesleyan)</td><td>Rishi Pokarna</td><td>Acoustic</td><td>normal</td><td>pending</td><td>Connect</td><td>Sep 2</td><td>CO-17916</td><td>Hot Case</td></tr>
+        <tr><td>411781</td><td>HaPoalim - Journey 380105 Stalled</td><td>Rishi Pokarna</td><td>B.S. Solutions LTD (Be2see)</td><td>high</td><td>pending</td><td>Campaign</td><td>Sep 1</td><td>CO-17848</td><td>Hot Case</td></tr>
+        <tr><td>411653</td><td>Reports not pulling any mailings</td><td>Rishi Pokarna</td><td>Messe Frankfurt, Inc.</td><td>high</td><td>pending</td><td>Campaign</td><td>Sep 1</td><td>CO-17810</td><td>Hot Case</td></tr>
+        <tr><td>411807</td><td>Need to migrate some templates from Campaign to Connect</td><td>Vaishnavi Dupare</td><td>Red Wing Shoe Company</td><td>high</td><td>open</td><td>Connect</td><td>Sep 1</td><td>CO-17857</td><td>Hot Case</td></tr>
+        <tr><td>411829</td><td>Failed to add a field to a relationship table.</td><td>Ratnesh Yadav</td><td>B.S. Solutions LTD (Be2see)</td><td>high</td><td>solved</td><td>Campaign</td><td>Sep 1</td><td>—</td><td>Hot Case</td></tr>
+      </tbody>
     </table></div>
-    <h4 class="st">Open Backlog by Agent</h4>
-    <div class="chart-box"><canvas id="chart-backlog2" height="260"></canvas></div>
+    <p style="font-size:.78rem;color:#5A5D77;margin-top:10px">All 7 escalations this week are Hot Case flags — no Client Escalated tickets in range. 3 of the 7 sit with Rishi Pokarna, all still pending customer follow-up.</p>
   </div>
 </div>
+
+<!-- SLIDE 4: CSAT -->
 <div class="slide" id="slide-4">
-  <div class="slide-header"><h2>🌟 CSAT</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>⭐ CSAT</h2><span class="date-badge">Aug 31 – Sep 6, 2026</span></div>
   <div class="slide-body">
     <div class="kpi-grid">
-      <div class="kpi green"><div class="v">19</div><div class="l">Good Ratings</div></div>
-      <div class="kpi red"><div class="v">1</div><div class="l">Bad Ratings</div></div>
-      <div class="kpi"><div class="v">91</div><div class="l">Surveys Offered</div></div>
-      <div class="kpi"><div class="v">95%</div><div class="l">CSAT Score</div></div>
-      <div class="kpi"><div class="v">22%</div><div class="l">Response Rate</div></div>
+      <div class="kpi green"><div class="v">94%</div><div class="l">Team CSAT Score</div></div>
+      <div class="kpi"><div class="v">17</div><div class="l">Good Ratings</div></div>
+      <div class="kpi red"><div class="v">1</div><div class="l">Bad Rating (DSAT)</div></div>
+      <div class="kpi amber"><div class="v">17%</div><div class="l">Survey Response Rate</div></div>
     </div>
-    <div class="chart-box"><h4>Good vs Bad Ratings by Agent</h4><canvas id="chart-csat" height="220"></canvas></div>
-    <div class="two-col" style="margin-top:14px">
-      <div class="col-card"><h4>👍 Customer Kudos</h4><div class="flag-card green"><h4>Potnuru Venkatesh — ENERGYAUSTRALIA SERVICES PTY LTD</h4><p>"Thanks Potnuru for the prompt help" (Ticket 411547)</p></div><div class="flag-card green"><h4>Potnuru Venkatesh — ENERGYAUSTRALIA SERVICES PTY LTD</h4><p>"Thanks Potnuru for the super quick call and resolving the issue quickly. Much appreciated !!" (Ticket 411459)</p></div><div class="flag-card green"><h4>Potnuru Venkatesh — Unknown org</h4><p>"v helpful and resolved issue swiftly. thank you!" (Ticket 411418)</p></div><div class="flag-card green"><h4>Potnuru Venkatesh — ENERGYAUSTRALIA SERVICES PTY LTD</h4><p>"Thanks Potnuru for resolution" (Ticket 411400)</p></div><div class="flag-card green"><h4>Potnuru Venkatesh — ENERGYAUSTRALIA SERVICES PTY LTD</h4><p>"Potnuru was of great help in the case. 
-Thanks for sharing the data from the aggregator." (Ticket 411396)</p></div><div class="flag-card green"><h4>Potnuru Venkatesh — Acoustic</h4><p>"Great support from Potnuru!" (Ticket 411130)</p></div></div>
-      <div class="col-card"><h4>⚠️ DSAT Feedback</h4><div class="flag-card"><h4>Arnab Dutta — Duke Energy Business Services LLC</h4><p>"Too hard to enter a ticket, can't get a person, had to track down thru email and final resolution was incorrect." (Ticket 411271)</p></div></div>
+    <div class="chart-box" style="margin-bottom:12px"><h4>CSAT Good vs Bad by Agent</h4><canvas id="chart-csat" height="150"></canvas></div>
+    <div class="two-col">
+      <div class="col-card">
+        <h4>💚 Customer Kudos</h4>
+        <p><b>Ticket 411815</b> (Potnuru Venkatesh) — "Very helpful and efficient support. Thank you Potnuru :)"</p>
+        <p><b>Ticket 411057</b>, Tropical Sky Ltd (Shashikant Patil) — "Extremely impressed at the support given by Shashikant on this case, very detailed, explained well, and a lot of effort and time given to help me resolve what I needed."</p>
+        <p><b>Ticket 411712</b>, Carrier Corporation (Arnab Dutta) — "Clear, helpful and complete explanation along with good communication skills."</p>
+        <p><b>Ticket 411958</b> (Ratnesh Yadav) — "The answer was fast and the issue was solved."</p>
+        <p><b>Ticket 411708</b> (Vaishnavi Dupare) — "Quick responses and always kept updated, thanks very much."</p>
+        <p><b>Ticket 409917</b>, Acoustic (Sidharth Bambole) — "Great support from Sid!"</p>
+      </div>
+      <div class="col-card">
+        <h4>⚠️ DSAT Feedback</h4>
+        <p><b>Ticket 411838</b>, Sun Life Assurance Company – Canada (Rishi Pokarna) — "The issue was partially resolved but it doesn't seem like Rishi really understood what I needed... Having to open support tickets for everything for outsourced support is really not a great customer experience."</p>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- SLIDE 5: FLAGS & HIGHLIGHTS -->
 <div class="slide" id="slide-5">
-  <div class="slide-header"><h2>🚩 Flags &amp; Highlights</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>🚩 Flags &amp; Highlights</h2><span class="date-badge">Aug 31 – Sep 6, 2026</span></div>
   <div class="slide-body">
-    <div class="kpi-grid">
-      <div class="kpi red"><div class="v">4</div><div class="l">Red Flags</div></div>
-      <div class="kpi amber"><div class="v">5</div><div class="l">Amber Flags</div></div>
-      <div class="kpi green"><div class="v">6</div><div class="l">On Track</div></div>
+    <div class="st">Attention Needed</div>
+    <div class="flag-card">
+      <h4>Anthony Stankoski &amp; Riya Sisodia — zero tickets solved</h4>
+      <p>Both agents show 0 solved this week. Anthony carries a 25:1 backlog ratio (25 open vs 0 solved); Riya's overall volume is low across the board (1 new, 3 open) — worth a capacity check-in.</p>
     </div>
-    <div class="flag-card"><h4>🔴 Vrushali Surve</h4><p>0 solved this week (team avg 11.9), 0 tickets open. Needs a workload check-in.</p></div>
-<div class="flag-card"><h4>🔴 Jeslin Jose</h4><p>2 solved this week (team avg 11.9), 39 tickets open. Needs a workload check-in.</p></div>
-<div class="flag-card"><h4>🔴 Anthony Stankoski</h4><p>0 solved this week (team avg 11.9), 20 tickets open. Needs a workload check-in.</p></div>
-<div class="flag-card"><h4>🔴 Riya Sisodia</h4><p>0 solved this week (team avg 11.9), 0 tickets open. Needs a workload check-in.</p></div>
-<div class="flag-card amber"><h4>🟡 Vaishnavi Dupare</h4><p>4 solved vs team avg 11.9; backlog ratio 4.75:1.</p></div>
-<div class="flag-card amber"><h4>🟡 Mike Watkin</h4><p>7 solved vs team avg 11.9; backlog ratio 1.86:1.</p></div>
-<div class="flag-card amber"><h4>🟡 Arnab Dutta</h4><p>7 solved vs team avg 11.9; backlog ratio 2.14:1.</p></div>
-<div class="flag-card amber"><h4>🟡 William Skaggs</h4><p>7 solved vs team avg 11.9; backlog ratio 4.0:1.</p></div>
-<div class="flag-card amber"><h4>🟡 Sidharth Bambole</h4><p>4 solved vs team avg 11.9; backlog ratio 8.25:1.</p></div>
-<div class="flag-card green"><h4>🏆 Potnuru Venkatesh</h4><p>Top performer this week — 32 tickets solved.</p></div>
-<div class="flag-card green"><h4>🏆 Shashikant Patil</h4><p>Top performer this week — 26 tickets solved.</p></div>
-<div class="flag-card green"><h4>🏆 Rishi Pokarna</h4><p>Top performer this week — 24 tickets solved.</p></div>
-<div class="flag-card violet"><h4>📦 Ratnesh Yadav — backlog watch</h4><p>39 open tickets, oldest 766 days, avg age 55.5 days.</p></div>
-<div class="flag-card violet"><h4>📦 Jeslin Jose — backlog watch</h4><p>39 open tickets, oldest 101 days, avg age 31.0 days.</p></div>
-<div class="flag-card violet"><h4>📦 Sidharth Bambole — backlog watch</h4><p>33 open tickets, oldest 201 days, avg age 37.3 days.</p></div>
+    <div class="flag-card">
+      <h4>Vrushali Surve — most severe backlog ratio on the team (20:1)</h4>
+      <p>Only 1 ticket solved against 20 open, including 13 low-priority tickets aging in queue.</p>
+    </div>
+    <div class="flag-card">
+      <h4>Rishi Pokarna — DSAT on Sun Life Assurance ticket</h4>
+      <p>Customer reports repeated follow-up without their core ask being addressed (ticket 411838). Worth a direct review given Rishi is also the team's #2 solver this week.</p>
+    </div>
+    <div class="st">Positive Highlights</div>
+    <div class="flag-card green">
+      <h4>Ratnesh Yadav — top performer (25 solved)</h4>
+      <p>Highest solve count on the team this week, with 3 customer kudos and a 100% CSAT score.</p>
+    </div>
+    <div class="flag-card green">
+      <h4>Vaishnavi Dupare — fastest backlog turnaround</h4>
+      <p>Lowest average open-ticket age on the team (13.7 days), well ahead of the next-fastest agent.</p>
+    </div>
+    <div class="flag-card green">
+      <h4>Arnab Dutta — backlog under control</h4>
+      <p>Only agent besides Potnuru Venkatesh with a sub-1.0 backlog ratio (0.88) — solving faster than new tickets arrive, plus 3 customer kudos this week.</p>
+    </div>
+    <div class="flag-card violet">
+      <h4>Team CSAT holding strong at 94%</h4>
+      <p>17 good vs 1 bad rating, though survey response rate remains low at 17% (18 of 103 surveys offered) — an opportunity to prompt more customers to respond.</p>
+    </div>
   </div>
 </div>
+
+<!-- SLIDE 9: COACHING -->
 <div class="slide" id="slide-9">
-  <div class="slide-header"><h2>💡 Coaching — Support Team</h2><span class="date-badge">Aug 17–23, 2026</span></div>
+  <div class="slide-header"><h2>💡 Coaching — Support Team</h2><span class="date-badge">Aug 31 – Sep 6, 2026</span></div>
   <div class="slide-body">
-    <div class="team-hdr" style="color:#1F1E5D;font-size:.95rem;font-weight:700;margin-bottom:10px">🛠️ Support Team | Agents: 143 solved · 11.9 avg · 6 of 15 on track</div>
+    <div class="team-hdr">🛠️ Support Team | Agents: 169 solved · 13.0 avg · 9 on track</div>
+
     <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Potnuru Venkatesh</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 32 · New: 28 · Open: 18 · Ratio: 0.56:1 · CSAT: 7 good</span>
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Potnuru Venkatesh</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 17 · New: 17 · Open: 17 · Ratio: 1.0:1 · CSAT: 3 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>3 hot cases and 1 client escalation sitting in open backlog</li><li>Oldest open ticket is 710 days old</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Perfect CSAT (3/3 good), with customers naming him directly in kudos</li><li>Solved matches new intake 1:1 — backlog held flat</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Prioritize the 710-day-old ticket and the 3 open hot cases before they age further.</span></div>
     </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No notable concerns this week</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Shashikant Patil</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 16 · New: 20 · Open: 35 · Ratio: 2.19:1 · CSAT: 1 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog growing — 35 open vs 16 solved (2.19:1), 14 high-priority tickets open</li><li>Low CSAT survey response rate (1 of 8 offered)</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Strong solve volume (16), named in a standout kudo from Tropical Sky Ltd</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Focus on the 14 high-priority open tickets before the backlog ratio compounds further.</span></div>
     </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 32 tickets, above team average</li><li>7 good CSAT rating(s)</li><li>Handled 1 client-escalated / 1 hot case ticket(s)</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Rishi Pokarna</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 24 · New: 28 · Open: 25 · Ratio: 1.04:1 · CSAT: 2 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 DSAT this week (Sun Life Assurance) citing his replies missed the actual ask</li><li>Carries 3 of the team's 7 open hot cases</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>2nd-highest solver on the team (24)</li><li>Lowest average open-ticket age among high-volume agents (43.8 days)</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Review the Sun Life DSAT directly — the feedback describes a recurring pattern of replies not addressing what was asked.</span></div>
     </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Shashikant Patil</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 26 · New: 21 · Open: 24 · Ratio: 0.92:1 · CSAT: 1 good</span>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Vaishnavi Dupare</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 17 · New: 21 · Open: 24 · Ratio: 1.41:1 · CSAT: 1 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 hot case open (Red Wing Shoe template migration, ticket 411807)</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Fastest average backlog age on the entire team (13.7 days)</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Keep the fast turnaround pace going; track the Red Wing Shoe hot case through to closure.</span></div>
     </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Open backlog at 24 tickets (oldest 837d, avg 164.9d)</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Raksha Bondanthila</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 16 · New: 18 · Open: 17 · Ratio: 1.06:1 · CSAT: 1 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Low CSAT survey response rate (1 of 10 offered)</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Balanced solved-to-open ratio, near 1:1</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Prompt customers to complete satisfaction surveys after resolution to improve response visibility.</span></div>
     </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 26 tickets, above team average</li><li>1 good CSAT rating(s)</li><li>Handled 2 client-escalated / 4 hot case ticket(s)</li></ul>
+
+    <div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Mike Watkin</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 6 · New: 7 · Open: 23 · Ratio: 3.83:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Below team average output (6 vs 13.0 avg)</li><li>13 high-priority tickets open; oldest ticket is 743 days</li><li>No CSAT surveys returned this week</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Pair with a teammate to work down the 13 high-priority tickets, starting with the oldest.</span></div>
     </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Rishi Pokarna</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 24 · New: 20 · Open: 22 · Ratio: 0.92:1 · CSAT: 3 good</span>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Arnab Dutta</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 16 · New: 14 · Open: 14 · Ratio: 0.88:1 · CSAT: 3 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio under 1.0 — solving faster than intake</li><li>3 customer kudos this week, 100% CSAT</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Strong model for backlog discipline — keep it up.</span></div>
     </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Open backlog at 22 tickets (oldest 689d, avg 54.0d)</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Ratnesh Yadav</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 25 · New: 28 · Open: 42 · Ratio: 1.68:1 · CSAT: 3 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Largest open backlog on the team (42 tickets), 9 high-priority</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Top solver on the team this week (25)</li><li>3 customer kudos, 100% CSAT</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Great volume — consider pairing with a teammate to help work down the 42-ticket backlog before it grows further.</span></div>
     </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 24 tickets, above team average</li><li>3 good CSAT rating(s)</li><li>Handled 1 client-escalated / 1 hot case ticket(s)</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Akashkumar Singh</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 10 · New: 10 · Open: 22 · Ratio: 2.2:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No CSAT responses this week despite 4 surveys offered</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved matches new intake (10 = 10) — kept pace this week</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Encourage customers to complete satisfaction surveys after resolution.</span></div>
     </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Vaishnavi Dupare</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 4 · New: 5 · Open: 19 · Ratio: 4.75:1 · CSAT: 1 good</span>
+
+    <div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">William Skaggs</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 · New: 10 · Open: 34 · Ratio: 4.86:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Below-average output (7 vs 13.0 avg)</li><li>One of the highest backlog ratios on the team (4.86:1), 17 low-priority tickets</li><li>No CSAT responses this week</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Needs a backlog-management check-in; consider reassigning some of the 17 aging low-priority tickets.</span></div>
     </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 4 vs team avg 11.9</li></ul>
+
+    <div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Sidharth Bambole</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 8 · New: 5 · Open: 28 · Ratio: 3.5:1 · CSAT: 2 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Backlog ratio 3.5:1, with 17 low-priority tickets open</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Meets on-track threshold (8 solved), 100% CSAT with a named kudo</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Good CSAT — now work down the low-priority backlog before it ages further.</span></div>
     </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 good CSAT rating(s)</li></ul>
+
+    <div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Vrushali Surve</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 1 · New: 2 · Open: 20 · Ratio: 20.0:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Very low output (1 solved) against 20 open tickets — most severe backlog ratio on the team</li><li>13 low-priority tickets stuck in queue</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Immediate 1:1 recommended — output and backlog are both far outside team norms this week.</span></div>
     </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Below team average — review open backlog priorities and see if urgent/high tickets need reassignment support.</span>
-  </div>
-</div><div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Raksha Bondanthila</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 10 · New: 6 · Open: 8 · Ratio: 0.8:1 · CSAT: 0 good</span>
+
+    <div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Jeslin Jose</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 6 · New: 7 · Open: 30 · Ratio: 5.0:1 · CSAT: 1 good</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Below-average output, backlog ratio 5.0:1</li><li>18 low-priority tickets open</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>100% CSAT on the one rating received</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Focus on clearing the low-priority backlog; a workload check-in is recommended.</span></div>
     </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 10 vs team avg 11.9</li></ul>
+
+    <div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Anthony Stankoski</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 0 · New: 5 · Open: 25 · Ratio: 25.0:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Zero tickets solved this week</li><li>Backlog ratio 25:1, with 23 normal-priority tickets open</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Priority 1:1 needed — zero output this week warrants immediate follow-up on blockers or capacity.</span></div>
     </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Handled 0 client-escalated / 1 hot case ticket(s)</li></ul>
+
+    <div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
+      <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div><b style="font-size:.95rem">Riya Sisodia</b><span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 0 · New: 1 · Open: 3 · Ratio: 3.0:1 · CSAT: —</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee"><div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Zero tickets solved and very low overall volume this week (1 new, 3 open)</li></ul></div>
+        <div style="background:#f5fff8;padding:10px 16px"><div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div><ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>—</li></ul></div>
+      </div>
+      <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px"><span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span><span style="font-size:.78rem;color:#3a3a3a">Confirm capacity/ramp status given the low overall volume — otherwise a workload review is warranted.</span></div>
     </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Mike Watkin</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 · New: 7 · Open: 13 · Ratio: 1.86:1 · CSAT: 1 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 7 vs team avg 11.9</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 good CSAT rating(s)</li><li>Handled 1 client-escalated / 1 hot case ticket(s)</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Below team average — review open backlog priorities and see if urgent/high tickets need reassignment support.</span>
-  </div>
-</div><div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Arnab Dutta</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 · New: 9 · Open: 15 · Ratio: 2.14:1 · CSAT: 1 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 7 vs team avg 11.9</li><li>1 DSAT rating this week</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>1 good CSAT rating(s)</li><li>Handled 0 client-escalated / 1 hot case ticket(s)</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Below team average — review open backlog priorities and see if urgent/high tickets need reassignment support.</span>
-  </div>
-</div><div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Ratnesh Yadav</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 10 · New: 18 · Open: 39 · Ratio: 3.9:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 10 vs team avg 11.9</li><li>Open backlog at 39 tickets (oldest 766d, avg 55.5d)</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Handled 0 client-escalated / 1 hot case ticket(s)</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #00DF8F;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#C6EFCE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Akashkumar Singh</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 10 · New: 11 · Open: 14 · Ratio: 1.4:1 · CSAT: 2 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#C6EFCE;color:#276221">🟢 On Track</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 10 vs team avg 11.9</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>2 good CSAT rating(s)</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Solid week — keep an eye on backlog age so today's pace doesn't turn into tomorrow's queue.</span>
-  </div>
-</div><div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">William Skaggs</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 7 · New: 8 · Open: 28 · Ratio: 4.0:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 7 vs team avg 11.9</li><li>Open backlog at 28 tickets (oldest 202d, avg 43.4d)</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No standout achievements logged this week</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Below team average — review open backlog priorities and see if urgent/high tickets need reassignment support.</span>
-  </div>
-</div><div style="border-left:4px solid #f39c12;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFEB9C;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Sidharth Bambole</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 4 · New: 8 · Open: 33 · Ratio: 8.25:1 · CSAT: 2 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFEB9C;color:#9C6500">🟡 Below Avg</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 4 vs team avg 11.9</li><li>Open backlog at 33 tickets (oldest 201d, avg 37.3d)</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>2 good CSAT rating(s)</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Below team average — review open backlog priorities and see if urgent/high tickets need reassignment support.</span>
-  </div>
-</div><div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Vrushali Surve</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 0 · New: 0 · Open: 0 · Ratio: 0.0:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 0 vs team avg 11.9</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No standout achievements logged this week</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Zero or near-zero output this week — check in 1:1 on blockers, workload, or availability before next week's report.</span>
-  </div>
-</div><div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Jeslin Jose</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 2 · New: 8 · Open: 39 · Ratio: 19.5:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 2 vs team avg 11.9</li><li>Open backlog at 39 tickets (oldest 101d, avg 31.0d)</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No standout achievements logged this week</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Zero or near-zero output this week — check in 1:1 on blockers, workload, or availability before next week's report.</span>
-  </div>
-</div><div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Anthony Stankoski</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 0 · New: 8 · Open: 20 · Ratio: 20.0:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 0 vs team avg 11.9</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No standout achievements logged this week</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Zero or near-zero output this week — check in 1:1 on blockers, workload, or availability before next week's report.</span>
-  </div>
-</div><div style="border-left:4px solid #e74c3c;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden">
-  <div style="background:#FFC7CE;padding:10px 16px;display:flex;justify-content:space-between;align-items:center">
-    <div>
-      <b style="font-size:.95rem">Riya Sisodia</b>
-      <span style="font-size:.78rem;color:#444;margin-left:10px">Solved: 0 · New: 0 · Open: 0 · Ratio: 0.0:1 · CSAT: 0 good</span>
-    </div>
-    <span style="padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;background:#FFC7CE;color:#9C0006">🔴 Low Output</span>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-    <div style="background:#fff5f5;padding:10px 16px;border-right:1px solid #eee">
-      <div style="font-size:.8rem;font-weight:700;color:#9C0006;margin-bottom:6px">⚠️ Concerns</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>Solved 0 vs team avg 11.9</li></ul>
-    </div>
-    <div style="background:#f5fff8;padding:10px 16px">
-      <div style="font-size:.8rem;font-weight:700;color:#276221;margin-bottom:6px">🏆 Achievements</div>
-      <ul style="font-size:.8rem;color:#3a3a3a;padding-left:18px;margin:0"><li>No standout achievements logged this week</li></ul>
-    </div>
-  </div>
-  <div style="background:#f0eeff;border-left:4px solid #706CFF;padding:10px 16px">
-    <span style="font-size:.78rem;font-weight:700;color:#706CFF">💡 Coaching Tip — </span>
-    <span style="font-size:.78rem;color:#3a3a3a">Zero or near-zero output this week — check in 1:1 on blockers, workload, or availability before next week's report.</span>
+
   </div>
 </div>
-  </div>
-</div>
+
 <div class="nav-bar">
   <button onclick="navigate(-1)">&#8592; Prev</button>
   <div class="dots" id="dots"></div>
   <span class="sc" id="sc">1 / 8</span>
   <button onclick="navigate(1)">Next &#8594;</button>
 </div>
+
 <script>
 var TOTAL=8,cur=0;
 var slides=document.querySelectorAll('.slide');
@@ -659,20 +461,17 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')navigate(1);
 });
 var ci={};
-var cL=["Potnuru", "Shashikant", "Rishi", "Vaishnavi", "Raksha", "Mike", "Arnab", "Ratnesh", "Akashkumar", "William", "Sidharth", "Vrushali", "Jeslin", "Anthony", "Riya"];
-var cSv=[32, 26, 24, 4, 10, 7, 7, 10, 10, 7, 4, 0, 2, 0, 0];
-var cBl=[18, 24, 22, 19, 8, 13, 15, 39, 14, 28, 33, 0, 39, 20, 0];
-var cNw=[28, 21, 20, 5, 6, 7, 9, 18, 11, 8, 8, 0, 8, 8, 0];
-var cCg=[7, 1, 3, 1, 0, 1, 1, 0, 2, 0, 2, 0, 0, 0, 0];
-var cCb=[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0];
+var cL=["Potnuru","Shashikant","Rishi","Vaishnavi","Raksha","Mike","Arnab","Ratnesh","Akashkumar","William","Sidharth","Vrushali","Jeslin","Anthony","Riya"];
+var cSv=[17,16,24,17,16,6,16,25,10,7,8,1,6,0,0];
+var cBl=[17,35,25,24,17,23,14,42,22,34,28,20,30,25,3];
+var cNw=[17,20,28,21,18,7,14,28,10,10,5,2,7,5,1];
+var cCg=[3,1,2,1,1,0,3,3,0,0,2,0,1,0,0];
+var cCb=[0,0,1,0,0,0,0,0,0,0,0,0,0,0,0];
 function initCharts(slide){
   if(ci[slide])return;ci[slide]=true;
   if(slide===1){
     new Chart(document.getElementById('chart-solved'),{type:'bar',data:{labels:cL,datasets:[{label:'Solved',data:cSv,backgroundColor:cSv.map(function(v){return v>=8?'#C6EFCE':v>=4?'#FFEB9C':'#FFC7CE';}),borderWidth:0}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
     new Chart(document.getElementById('chart-combo'),{type:'bar',data:{labels:cL,datasets:[{label:'Open Backlog',data:cBl,backgroundColor:'#FFC7CE'},{label:'New Assigned',data:cNw,backgroundColor:'#C6EFCE'}]},options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true}}}});
-  }
-  if(slide===4){
-    new Chart(document.getElementById('chart-backlog2'),{type:'bar',data:{labels:cL,datasets:[{label:'Open',data:cBl,backgroundColor:cBl.map(function(v){return v>15?'#FFC7CE':v>8?'#FFEB9C':'#C6EFCE';}),borderWidth:0}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{beginAtZero:true}}}});
   }
   if(slide===5){
     new Chart(document.getElementById('chart-csat'),{type:'bar',data:{labels:cL,datasets:[{label:'Good',data:cCg,backgroundColor:'#C6EFCE',borderColor:'#276221',borderWidth:1},{label:'Bad',data:cCb,backgroundColor:'#FFC7CE',borderColor:'#9C0006',borderWidth:1}]},options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,ticks:{stepSize:1},max:4}}}});
@@ -680,5 +479,6 @@ function initCharts(slide){
 }
 initCharts(0);
 </script>
+
 </body>
 </html>
